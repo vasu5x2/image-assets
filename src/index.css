@@ -1,0 +1,51 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.imageContainer {
+  position: relative;
+}
+
+/* Heart (Like) Icon placed at the top-right of the image */
+.heartIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.7); /* Slight background for visibility */
+  color: gray;
+  z-index: 10;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s;
+}
+
+/* Show the heart icon when hovering over the image */
+.imageContainer:hover .heartIcon {
+  opacity: 1;
+}
+
+/* Initially hide the three dots button */
+.dotsIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s;
+}
+
+/* Show the three dots icon when hovering over the image */
+.imageContainer:hover .dotsIcon {
+  opacity: 1;
+}
+
+/* Menu item styling */
+.menuItem {
+  display: flex;
+  align-items: center;
+}
+
+.menuItemIcon {
+  margin-right: 8px;
+}
