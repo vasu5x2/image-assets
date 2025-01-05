@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { IconButton, Menu, MenuItem, ImageList, ImageListItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteIcon from "@mui/icons-material/Delete";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; // Blank heart icon
-import FavoriteIcon from "@mui/icons-material/Favorite"; // Filled heart icon
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; 
+import FavoriteIcon from "@mui/icons-material/Favorite"; 
 
 const UploadImageMasonry = ({ images, handleDeleteImage }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-  const [likedImages, setLikedImages] = useState({}); // Track liked images by index
+  const [likedImages, setLikedImages] = useState({}); 
 
   const handleClick = (event, index) => {
     setAnchorEl(event.currentTarget);
@@ -28,7 +28,7 @@ const UploadImageMasonry = ({ images, handleDeleteImage }) => {
   const handleLike = (index) => {
     setLikedImages((prev) => ({
       ...prev,
-      [index]: !prev[index], // Toggle like status
+      [index]: !prev[index], 
     }));
   };
 
@@ -47,7 +47,7 @@ const UploadImageMasonry = ({ images, handleDeleteImage }) => {
                   }`,
                 }}
               />
-              {/* Heart Icon (Like button) above the image (top-right) */}
+             
               <IconButton
                 className="heartIcon"
                 onClick={() => handleLike(index)}
@@ -57,17 +57,14 @@ const UploadImageMasonry = ({ images, handleDeleteImage }) => {
                 ) : (
                   <FavoriteBorderIcon />
                 )}
-              </IconButton>
-
-              {/* Three Dots Icon visible on hover (bottom-right) */}
+              </IconButton>             
               <IconButton
                 onClick={(event) => handleClick(event, index)}
                 className="dotsIcon"
               >
                 <MoreVertIcon />
               </IconButton>
-
-              {/* Menu for image options (Hide, Edit, Delete) */}
+              
               <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl) && selectedImageIndex === index}
@@ -77,7 +74,7 @@ const UploadImageMasonry = ({ images, handleDeleteImage }) => {
                   <DeleteIcon className="menuItemIcon" />
                   Delete
                 </MenuItem>
-                {/* Hide and Edit options are non-functional */}
+          
                 <MenuItem onClick={handleClose} className="menuItem">
                   Hide
                 </MenuItem>
