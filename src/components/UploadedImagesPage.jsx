@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import { Button, Alert } from "@mui/material";
 import UploadImageMasonry from "./UploadImageMasonry";
-import ImageDrawer from "./ImageDrawer"; // Import ImageDrawer
+import ImageDrawer from "./ImageDrawer"; 
 
 
 
@@ -28,20 +28,20 @@ const UploadedImagesPage = ({ images, setImages }) => {
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
-        setShowAlert(false); // Hide alert after 5 seconds
-      }, 5000); // 5000 ms = 5 seconds
+        setShowAlert(false); 
+      }, 5000);
 
-      return () => clearTimeout(timer); // Cleanup timeout on component unmount or alert change
+      return () => clearTimeout(timer); 
     }
   }, [showAlert]); 
   const handleUploadImage = () => {
     const newImage = { src: imgSrc, rotate, flipH, flipV };
     setImages((prevImages) => {
       const updatedImages = [...prevImages, newImage];
-      localStorage.setItem("uploadedImages", JSON.stringify(updatedImages)); // Update localStorage
+      localStorage.setItem("uploadedImages", JSON.stringify(updatedImages)); 
       return updatedImages;
     });
-    setOpenDrawer(false); // Close drawer after uploading
+    setOpenDrawer(false); 
   };
 
   const handleDeleteImage = (index) => {
@@ -66,18 +66,17 @@ const UploadedImagesPage = ({ images, setImages }) => {
           <option value="az">A-Z</option>
         </select>
 
-        {/* Add Button */}
+      
         <Button
           variant="contained"
           color="primary"
-          onClick={() => document.getElementById("file-input").click()} // Opens file input
+          onClick={() => document.getElementById("file-input").click()} 
           style={{ marginLeft: "10px" }}
         >
           + Add
         </Button>
       </div>
 
-      {/* File Input */}
       <input
         id="file-input"
         type="file"
@@ -86,7 +85,6 @@ const UploadedImagesPage = ({ images, setImages }) => {
         onChange={handleImageChange}
       />
 
-      {/* ImageDrawer for Image Manipulation */}
       {imgSrc && (
         <ImageDrawer
           openDrawer={openDrawer}
@@ -103,13 +101,11 @@ const UploadedImagesPage = ({ images, setImages }) => {
         />
       )}
 
-      {/* Display the images using masonry layout */}
       <UploadImageMasonry
         images={images}
-        handleDeleteImage={handleDeleteImage} // Pass delete function to UploadImageMasonry
+        handleDeleteImage={handleDeleteImage} 
       />
 
-      {/* Show Alert when an image is deleted */}
       {showAlert && (
         <Alert
           severity="warning"
